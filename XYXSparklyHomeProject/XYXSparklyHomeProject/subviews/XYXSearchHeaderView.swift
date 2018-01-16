@@ -15,10 +15,20 @@ class XYXSearchHeaderView: UIView {
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var gradedView: UIView!
     
+    override var frame: CGRect{
+        didSet{
+            configureSetting()
+        }
+    
+    }
     var aspectRatio:CGFloat = 0
     var originRect = CGRect.zero
     
     override func awakeFromNib() {
+        configureSetting()
+    }
+    
+    fileprivate func configureSetting(){
         aspectRatio = UIScreen.main.bounds.width / frame.height
         originRect = CGRect(origin:CGPoint(x:0,y:0),size:CGSize(width:UIScreen.main.bounds.width,height:frame.height))
     }
